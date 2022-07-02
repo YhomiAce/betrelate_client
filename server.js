@@ -1,15 +1,21 @@
 const express = require('express');
+const Cors = require("cors");
 const connectDB = require('./config/db');
+
 
 const app = express();
 connectDB();
 
 // Init middleware
+app.use(Cors());
 app.use(express.json({ extend: false }));
+if (process.env === "development") {
+    app.use(require("morgan"))
+}
 
 app.get('/', (req, res) => res.send('Betrelate Client Api running'));
 
-app.use("/client/api", require("./routes"));
+app.use("/api/client", require("./routes"));
 
 
 // Handles all errors

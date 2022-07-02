@@ -20,9 +20,6 @@ const BorrowedBookSchema = new Schema({
     },
     dateToReturn: {
         type: Date
-    },
-    dateReturned: {
-        type: Date
     }
 }, { timestamps: true });
 
